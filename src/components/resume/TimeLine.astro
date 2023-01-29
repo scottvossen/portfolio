@@ -12,20 +12,20 @@ const { title, subtitle, detailLines, technologies } = Astro.props;
   <div class="experience__data bd-grid px-5 mb-5">
     <h3 class="font-semibold mb-1">{title}</h3>
     <span class="font-light text-sm">{subtitle}</span>
-    <p class="my-2 text-justify">
-      <ul>
+    <div class="my-2 text-justify">
+      <ul class="list-disc list-inside">
         {detailLines?.map((line) => <li>{line}</li>)}
-
-        {
-          technologies === undefined ? (
-            ''
-          ) : (
-            <li class="mt-2 text-sm">
-              <em>Technologies: {technologies}</em>
-            </li>
-          )
-        }
       </ul>
-    </p>
+
+      {
+        technologies === undefined ? (
+          ''
+        ) : (
+          <p class="mt-2 text-sm">
+            <em>Technologies: {technologies}</em>
+          </p>
+        )
+      }
+    </div>
   </div>
 </div>
