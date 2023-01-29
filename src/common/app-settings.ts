@@ -1,10 +1,7 @@
-import astroConfig from '../../astro.config.mjs';
-
+const siteBase = '/portfolio';
 const isProd = process.env.NODE_ENV === 'production';
 
-const appSettings = {
-  siteRoot: astroConfig.base,
-  resourceRoot: isProd ? astroConfig.base : ''
+export const AppSettings = {
+  siteRoot: siteBase,
+  resourceRoot: isProd ? siteBase : ''
 };
-
-export const AppSettings = appSettings;
