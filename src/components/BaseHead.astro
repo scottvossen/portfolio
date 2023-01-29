@@ -2,6 +2,7 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
+import { AppSettings } from '../common/app-settings';
 
 export interface Props {
   title: string;
@@ -9,7 +10,11 @@ export interface Props {
   image?: string;
 }
 
-const { title, description, image = '/social_img.jpg' } = Astro.props;
+const {
+  title,
+  description,
+  image = `${AppSettings.resourceRoot}/social_img.jpg`
+} = Astro.props;
 ---
 
 <!-- Global Metadata -->

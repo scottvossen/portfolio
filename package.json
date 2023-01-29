@@ -9,7 +9,6 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "postbuild": "node ./postbuild.mjs -path https://scottvossen.github.io/portfolio/",
     "astro": "astro"
   },
   "dependencies": {
