@@ -9,27 +9,110 @@ import TimeLineElement from '../components/resume/TimeLine.astro';
   </div>
 
   <div class="mb-10 text-justify">
-    Engineer in Informatics Science with 6 years + of experience in software
-    development. Dominion of various programming languages, frameworks, CMS and
-    graphics engines. Experience in WEB design and development. Work with Data
-    Base handled systems, as well as design, normalization and migration.
-    Knowledge of work with graphic design tools for image manipulation , User
-    Interfaces design, Web sites, logos and other ones.
+    <ul>
+      <li>
+        Software Engineer with more than 10 years of experience in full stack
+        software development.
+      </li>
+      <li>
+        Specialization in cloud based applications an emphasis on .NET (C#),
+        Azure, and automation.
+      </li>
+      <li>
+        Hands on leader who takes ownership of the product, architecture, and
+        team.
+      </li>
+      <li>
+        Passion for monitoring and analytics, system architecture, and developer
+        productivity.
+      </li>
+    </ul>
   </div>
 
   <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Education</div>
+    <div class="text-3xl w-full font-bold">Skills</div>
   </div>
 
-  <div class="time-line-container grid gap-4 mb-10">
-    <TimeLineElement
-      title="Technician Information-Technology"
-      subtitle="2006 to 2009 at Osvaldo Herrera Polytechnic institute, Habana, Cuba"
-    />
-    <TimeLineElement
-      title="Informatics Science Engineer"
-      subtitle="2010 to 2015 at University of Informatics Science (UCI), Habana, Cuba"
-    />
+  <div class="flex flex-wrap">
+    <div class="w-1/2 md:w-1/4 mb-2">
+      <p class="font-bold">Specialties</p>
+      <ul class="list-disc list-inside">
+        <li>C#</li>
+        <li>Azure</li>
+        <li>Azure DevOps</li>
+        <li>ASP.NET</li>
+        <li>JavaScript</li>
+        <li>TypeScript</li>
+      </ul>
+    </div>
+
+    <div class="w-1/2 md:w-1/4 mb-2">
+      <p class="font-bold">Backend</p>
+      <ul class="list-disc list-inside">
+        <li>.NET (C#)</li>
+        <li>Node</li>
+        <li>Python</li>
+        <li>Java</li>
+        <li>PHP</li>
+      </ul>
+    </div>
+
+    <div class="w-1/2 md:w-1/4 mb-2">
+      <p class="font-bold">Backend Frameworks</p>
+      <ul class="list-disc list-inside">
+        <li>ASP.NET</li>
+        <li>Entity Framework</li>
+        <li>WPF</li>
+        <li>Winforms</li>
+        <li>Spring</li>
+      </ul>
+    </div>
+
+    <div class="w-1/2 md:w-1/4 mb-2">
+      <p class="font-bold">Web</p>
+      <ul class="list-disc list-inside">
+        <li>HTML</li>
+        <li>CSS, SASS</li>
+        <li>JS, TS</li>
+        <li>React</li>
+        <li>Angular</li>
+        <li>Astro</li>
+        <li>Knockout</li>
+        <li>Backbone</li>
+        <li>JQuery</li>
+      </ul>
+    </div>
+
+    <div class="w-1/2 md:w-1/4 mb-2">
+      <p class="font-bold">DevOps</p>
+      <ul class="list-disc list-inside">
+        <li>Azure DevOps</li>
+        <li>GitHub Actions</li>
+        <li>Kubernetes</li>
+        <li>Docker</li>
+      </ul>
+    </div>
+
+    <div class="w-1/2 md:w-1/4 mb-2">
+      <p class="font-bold">Databases</p>
+      <ul class="list-disc list-inside">
+        <li>MSSQL</li>
+        <li>CosmosDB</li>
+        <li>DynamoDB</li>
+        <li>MySQL</li>
+      </ul>
+    </div>
+
+    <div class="w-1/2 md:w-1/4 mb-2">
+      <p class="font-bold">Testing</p>
+      <ul class="list-disc list-inside">
+        <li>XUnit</li>
+        <li>NUnit</li>
+        <li>MS Test</li>
+        <li>Moq</li>
+        <li>JMeter</li>
+      </ul>
+    </div>
   </div>
 
   <div class="mb-5">
@@ -38,27 +121,116 @@ import TimeLineElement from '../components/resume/TimeLine.astro';
 
   <div class="time-line-container mb-10">
     <TimeLineElement
-      title="UI Designer and Developer at Integral Access Control System (Thesis)"
-      subtitle="From 2015 at XETID, Habana, Cuba"
-      desc="System multiplatform that includes the steps of a company's personnel, the structure and composition thereof, as well as a powerful designer of credentials and module of control of access. Outspread at the MINFAR and another entities of the country. Technologies: C++, Qt Framework, Subversión, Visual Paradigm, PostgreSQL, Jmeter"
+      title="Senior Software Engineer at Microsoft"
+      subtitle="May 2021 to Present"
+      detailLines={[
+        'Support azure.microsoft.com site, the underlying data platform, and its infrastructure across 12 regions.',
+        'Tackled security projects requiring infrastructure changes impacting 2000+ resources and services.',
+        'Lead automation projects focused on reducing manual engineering workload and simplifying project rollout.'
+      ]}
+      technologies="Azure, React, C#, ASP.NET, .NET Core, Azure Service Bus, Redis, Azure Search, Azure Networking"
     />
     <TimeLineElement
-      title="Web Developer at Integral Oil Drilling System 2.0"
-      subtitle="From 2015 to 2016 at CEDIN, UCI, Habana, Cuba"
-      desc="System of steps of process of perforation of oil wells. Outspread in the direction of Intervención of Wells and various wells of drilling of the Occident of the country. Generate reports and graphs of process of perforation making use of data mining. Technologies: Php,Symfony 2.7 , Subversión, PostgreSQL, HigthChart, Ireport, Boostrap 2, JQuery, HTML,CSS, JavaScript"
+      title="Senior Principal Engineer at Blackbaud"
+      subtitle="Oct 2020 to May 2021"
+      detailLines={[
+        'Served as senior member of Core Services team focusing on the SKY UX platform.',
+        'Lead development of critical notification features leveraged across application suites: push, email, SMS.',
+        'Supported core infrastructure including Navigation, SPA hosting, user settings, & SKY Angular components.'
+      ]}
+      technologies="Azure, AWS, C#, Angular, Node, ASP.NET, .NET Core, Azure Service Bus, NoSql DBs, Docker, Kubernetes"
     />
     <TimeLineElement
-      title="Full Stack Dev, Software Architect and Project Leader at Integral Oil Drilling System 3.0"
-      subtitle="From 2016 to 2017 at CEDIN, UCI, Habana, Cuba"
-      desc="System of steps of process of perforation of oil wells. Outspread in the direction of Intervención of Wells and various wells of drilling of the Occident of the country. Generate reports and graphs of process of perforation making use of data mining. Technologies: Php,Symfony 2.8 , Gitlab, PostgreSQL, HigthChart, Boostrap 2, JQuery, HTML,CSS, JavaScript"
+      title="Principal Engineer at Trimble"
+      subtitle="Feb 2019 to Oct 2020"
+      detailLines={[
+        'Served as Architect and technical lead for Trimble Transportation Analytics Platform.',
+        'Delivered new products lines; dispatch optimizer, driver retention predictor, vehicle maintenance predictor.',
+        'Built Azure based microservice platform including SSO, access management, and CI/CD pipelines.',
+        'Integrated analytics and machine learning tools with greenfield and legacy products.',
+        'Owned technical backlog and participated in the overall planning of analytics infrastructure.'
+      ]}
+      technologies="Azure, C#, React, ASP.NET Core, EF, Event Hubs, Serverless, Data Factory, Snowflake, ADX"
     />
     <TimeLineElement
-      title="Full Stack Dev, UI/UX Designer and Software Architect at Primary Information System"
-      subtitle="From 2017 to 2018 at CEDIN, UCI, Habana, Cuba"
-      desc="System of steps of primary information at a company. personnel's steps, control of access, impression of credentials, steps of locales, structure and composition. Technologies: Php,Symfony 3.3 , Gitlab, PostgreSQL, , Boostrap 3, JQuery, HTML,CSS, JavaScript"
+      title="Principal Engineer at Blackbaud"
+      subtitle="Feb 2016 to Feb 2019"
+      detailLines={[
+        'Technical Lead for a team of six developers ranging from junior to senior principal levels.',
+        'Delivered green field enterprise donor portal from inception, processing over $300M in grants annually.',
+        'Contributed several shared microservices to the 1BB Cloud Platform; file, form, feature and setting services.',
+        'Provided mentorship for team members, interviewing, and defined best practices across products.'
+      ]}
+      technologies="Azure, AWS, C#, Angular, Node, ASP.NET, .NET Core, EF, Azure Service Bus, NoSql DBs, Docker"
+    />
+    <TimeLineElement
+      title="Software Developer at Verisk"
+      subtitle="Aug 2015 to Feb 2016"
+      detailLines={[
+        'Worked on cross team web based EBR / fraud detection solution.',
+        'Introduced modern front-end tooling (bootstrap, node, bower, gulp, SASS) to new and legacy products.'
+      ]}
+      technologies="C#, Angular.js, ASP.NET, Entity Framework, JS, CSS, SASS, Node, Gulp, Git, SVN"
+    />
+    <TimeLineElement
+      title="Consultant at RBA, Inc."
+      subtitle="Sept 2013 to Aug 2015"
+      detailLines={[
+        'Worked on cross team web based EBR / fraud detection solution.',
+        'Introduced modern front-end tooling (bootstrap, node, bower, gulp, SASS) to new and legacy products.'
+      ]}
+      technologies="C#, Angular.js, ASP.NET, Entity Framework, JS, CSS, SASS, Node, Gulp, Git, SVN"
+    />
+    <TimeLineElement
+      title="Software Developer at MTS Systems Corporation"
+      subtitle="Nov 2012 to Sept 2013"
+      detailLines={[
+        'Junior member of TestSuite product team, designing extensibility APIs and feedback reporting solutions'
+      ]}
+      technologies="Winforms, C#, Python, ASP.NET, HTML, CS, JS, TFS, NUnit, SignalR"
+    />
+    <TimeLineElement
+      title="Software Developer at Oracle Corporation"
+      subtitle="Feb 2012 to Nov 2012"
+      detailLines={[
+        'Worked as part of an R&D team geared towards moving tech stack to Fusion Middleware'
+      ]}
+      technologies="Java, ADF, Groovy, J2EE, JSF, WebLogic, Maven, SVN, CVS, Oracle DB"
+    />
+    <TimeLineElement
+      title="Software Developer Intern at MTS Systems Corporation"
+      subtitle="Summer 2011"
+      detailLines={[
+        'Created multiple internal applications using WinForms and ASP.NET to increase productivity within team'
+      ]}
+      technologies="Winforms, C#, Python, ASP.NET, HTML, CS, JS, TFS, NUnit"
+    />
+    <TimeLineElement
+      title="Web Developer Intern at Manufacturing Network Incorporated"
+      subtitle="Summer 2010"
+      detailLines={[
+        'Designed and implemented DBMS for web driven inventory control'
+      ]}
+      technologies="PHP, HTML, JS, MySQL, Apache Tomcat, Git"
     />
   </div>
 
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Education</div>
+  </div>
+
+  <div class="time-line-container grid gap-4 mb-10">
+    <TimeLineElement
+      title="Bachelor of Science (B.S.), Software Engineering"
+      subtitle="2009 to 2012 at Minnesota State Universit, Mankato, MN"
+    />
+    <TimeLineElement
+      title="Associates of Applied Science, Architectural Drafting"
+      subtitle="2005 to 2007 at South Central College, North Mankato, MN"
+    />
+  </div>
+
+  <!--
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Certifications</div>
   </div>
@@ -78,47 +250,5 @@ import TimeLineElement from '../components/resume/TimeLine.astro';
       >
     </li>
   </ul>
-
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Skills</div>
-  </div>
-
-  <ul class="list-disc md:columns-5 columns-2 mx-6">
-    <li>Spanish (Native)</li>
-    <li>English (C2)</li>
-    <li>JavaScript</li>
-    <li>C++</li>
-    <li>PHP</li>
-    <li>Ruby</li>
-    <li>Postgres SQL</li>
-    <li>MySQL</li>
-    <li>CSS</li>
-    <li>SASS</li>
-    <li>HTML</li>
-    <li>Node.js</li>
-    <li>Ruby on Rails</li>
-    <li>AngularJS</li>
-    <li>VUE</li>
-    <li>Astro</li>
-    <li>Symfony 3</li>
-    <li>Yii2</li>
-    <li>Bootstrap</li>
-    <li>Taildwind</li>
-    <li>JQuery</li>
-    <li>Wordpress</li>
-    <li>Git</li>
-    <li>Jira</li>
-    <li>Trello</li>
-    <li>BaseCamp</li>
-    <li>Scrum</li>
-    <li>Shape Up</li>
-    <li>LeanStartup</li>
-    <li>UI Design</li>
-    <li>WEB Design</li>
-    <li>Logo Design</li>
-    <li>Image Manipulation</li>
-    <li>Office Suite</li>
-    <li>Adobe Photoshop</li>
-    <li>KdenLive</li>
-  </ul>
+  -->
 </BaseLayout>
