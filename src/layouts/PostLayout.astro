@@ -1,6 +1,6 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import BaseLayout from "./BaseLayout.astro";
+import BaseHead from '../components/BaseHead.astro';
+import BaseLayout from './BaseLayout.astro';
 
 export interface Props {
   content: {
@@ -26,13 +26,13 @@ const {
       {
         updatedDate && (
           <div>
-            {" "}
-            Last updated on <time>{updatedDate}</time>{" "}
+            {' '}
+            Last updated on <time>{updatedDate}</time>{' '}
           </div>
         )
       }
       <div class="divider my-2"></div>
-        <slot />
+      <slot />
     </article>
   </main>
 </BaseLayout>
