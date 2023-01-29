@@ -1,0 +1,40 @@
+{
+    "[astro]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+      "editor.tabSize": 2,
+      "editor.quickSuggestions": {
+        "strings": true
+      },
+      "editor.suggest.insertMode": "replace",
+      "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+      }
+    },
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+      }
+    },
+    "editor.formatOnSave": true,
+    "editor.rulers": [
+      120
+    ],
+    "plantuml.diagramsRoot": "docs/diagrams/src",
+    "plantuml.exportOutDir": "docs/diagrams/out",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "typescript.preferences.importModuleSpecifier": "relative"
+  }
+  
