@@ -1,5 +1,5 @@
 ---
-import { AppSettings } from '../common/app-settings';
+import { SITE_ROOT } from '../config';
 
 const themes = [
   'light',
@@ -57,7 +57,7 @@ const themes = [
     <div class="navbar-center">
       <a
         class="btn btn-ghost normal-case text-xl lg:hidden"
-        href={`${AppSettings.siteRoot}/`}
+        href={`${SITE_ROOT}/`}
       >
         Scott Vossen ⚡️</a
       >

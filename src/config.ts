@@ -1,6 +1,7 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
+const siteBase = '/portfolio';
+const isProd = process.env.NODE_ENV === 'production';
 
-export const SITE_TITLE = 'Astro Modern Personal Website Template';
-export const SITE_DESCRIPTION =
-  'Astro Modern Personal Website template with Project Section, CV Section, Paginated Blog, RSS Feed, SEO Friendly, Visual themes and Responsive Desing.';
+export const SITE_ROOT = '/portfolio';
+export const RESOURCE_ROOT = isProd ? siteBase : '';
+export const SITE_TITLE = 'Scott Vossen';
+export const SITE_DESCRIPTION = 'Scott Vossen Software Engineer Portfolio.';

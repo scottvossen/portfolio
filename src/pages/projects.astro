@@ -1,5 +1,5 @@
 ---
-import { AppSettings } from '../common/app-settings';
+import { SITE_ROOT, RESOURCE_ROOT } from '../config';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HorizontalCard from '../components/HorizontalCard.astro';
 ---
@@ -11,7 +11,7 @@ import HorizontalCard from '../components/HorizontalCard.astro';
 
   <HorizontalCard
     title="Demo Project 1"
-    img={`${AppSettings.resourceRoot}/post_img.webp`}
+    img={`${RESOURCE_ROOT}/post_img.webp`}
     desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     url="#"
     badge="NEW"
@@ -19,7 +19,7 @@ import HorizontalCard from '../components/HorizontalCard.astro';
   <div class="divider my-0"></div>
   <HorizontalCard
     title="Demo Project 2"
-    img={`${AppSettings.resourceRoot}/post_img.webp`}
+    img={`${RESOURCE_ROOT}/post_img.webp`}
     desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     url="#"
   />
@@ -30,7 +30,7 @@ import HorizontalCard from '../components/HorizontalCard.astro';
 
   <HorizontalCard
     title="Demo Project 3"
-    img={`${AppSettings.resourceRoot}/post_img.webp`}
+    img={`${RESOURCE_ROOT}/post_img.webp`}
     desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     url="#"
     badge="FOSS"
@@ -38,14 +38,14 @@ import HorizontalCard from '../components/HorizontalCard.astro';
   <div class="divider my-0"></div>
   <HorizontalCard
     title="Demo Project 4"
-    img={`${AppSettings.resourceRoot}/post_img.webp`}
+    img={`${RESOURCE_ROOT}/post_img.webp`}
     desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     url="#"
   />
   <div class="divider my-0"></div>
   <HorizontalCard
     title="Demo Project 5"
-    img={`${AppSettings.resourceRoot}/post_img.webp`}
+    img={`${RESOURCE_ROOT}/post_img.webp`}
     desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     url="#"
   />
