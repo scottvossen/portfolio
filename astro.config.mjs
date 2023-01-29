@@ -7,7 +7,7 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://scottvossen.github.io/portfolio',
-  // base: '/portfolio',
+  site: 'https://scottvossen.github.io',
+  base: '/portfolio',
   integrations: [mdx(), sitemap(), tailwind(), react()]
 });
