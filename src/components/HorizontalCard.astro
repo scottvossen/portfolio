@@ -18,6 +18,9 @@ const { title, img, desc, url, badge, tags, target = '_blank' } = Astro.props;
           {badge && <div class="badge badge-secondary mx-2">{badge}</div>}
         </h1>
         <p class="py-1 text-1xl">{desc}</p>
+
+        <slot/>
+
         <div class="card-actions justify-end">
           {
             tags &&

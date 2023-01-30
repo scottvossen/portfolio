@@ -6,47 +6,43 @@ import HorizontalCard from '../components/HorizontalCard.astro';
 
 <BaseLayout title="Projects">
   <div>
-    <div class="text-3xl w-full font-bold mb-5">Projects Header</div>
+    <div class="text-3xl w-full font-bold mb-5">Professional</div>
   </div>
 
   <HorizontalCard
-    title="Demo Project 1"
+    title="Coming Soon!"
     img={`${RESOURCE_ROOT}/post_img.webp`}
     desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     url="#"
     badge="NEW"
   />
-  <div class="divider my-0"></div>
+  <!-- <div class="divider my-0"></div>
   <HorizontalCard
     title="Demo Project 2"
     img={`${RESOURCE_ROOT}/post_img.webp`}
     desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     url="#"
-  />
+  /> -->
 
   <div>
-    <div class="text-3xl w-full font-bold mb-5 mt-10">Projects Header</div>
+    <div class="text-3xl w-full font-bold mb-5 mt-10">Personal</div>
   </div>
 
   <HorizontalCard
-    title="Demo Project 3"
-    img={`${RESOURCE_ROOT}/post_img.webp`}
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="FOSS"
-  />
+    title="Rokugan Map"
+    desc='An interactive map of Rokugan, from The Legend of the Five Rings fantasy world.'
+    img={`${RESOURCE_ROOT}/projects/rokugan-map.png`}
+    url="https://scottvossen.github.io/rokugan-map/"
+  >
+    <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/scottvossen/rokugan-map" target="_blank">View the source code</a>
+  </HorizontalCard>
   <div class="divider my-0"></div>
   <HorizontalCard
-    title="Demo Project 4"
-    img={`${RESOURCE_ROOT}/post_img.webp`}
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 5"
-    img={`${RESOURCE_ROOT}/post_img.webp`}
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
+    title="Dragonlance Moon Tracker"
+    desc='A moon tracker from Krynn, a fantasy world from the Dragonlance fantasy series by Weiss and Hickman.'
+    img={`${RESOURCE_ROOT}/projects/krynn-moon-tracker.png`}
+    url="https://scottvossen.github.io/dragonlance-moon-tracker/"
+  >
+    <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/scottvossen/dragonlance-moon-tracker" target="_blank">View the source code</a>
+  </HorizontalCard>
 </BaseLayout>
