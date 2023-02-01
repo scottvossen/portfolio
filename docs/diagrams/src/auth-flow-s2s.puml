@@ -1,0 +1,104 @@
+@startuml auth-flow-s2s
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+' Import azure components
+'     - https://dev.azure.com/azurecom/ACOM/_wiki/wikis/ACOM.wiki/4061/PlantUML-Diagrams
+'     - https://github.com/RicardoNiepel/C4-PlantUML
+'     - https://github.com/plantuml-stdlib/Azure-PlantUML
+'     - https://github.com/plantuml-stdlib/Azure-PlantUML/blob/master/AzureSymbols.md#azure-symbols
+!define AzurePuml https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist
+!includeurl AzurePuml/AzureCommon.puml
+' optional flag for simplified view (must be after common)
+' !includeurl AzurePuml/AzureSimplified.puml
+!includeurl AzurePuml/AzureC4Integration.puml
+
+!includeurl AzurePuml/AIMachineLearning/all.puml
+!includeurl AzurePuml/Analytics/all.puml
+!includeurl AzurePuml/Compute/all.puml
+!includeurl AzurePuml/Containers/all.puml
+!includeurl AzurePuml/Databases/all.puml
+!includeurl AzurePuml/DevOps/all.puml
+!includeurl AzurePuml/General/all.puml
+!includeurl AzurePuml/Identity/all.puml
+!includeurl AzurePuml/Integration/all.puml
+!includeurl AzurePuml/Management/all.puml
+!includeurl AzurePuml/Media/all.puml
+!includeurl AzurePuml/Mobile/all.puml
+!includeurl AzurePuml/Networking/all.puml
+!includeurl AzurePuml/Security/all.puml
+!includeurl AzurePuml/Storage/all.puml
+!includeurl AzurePuml/Web/all.puml
+
+' Import sprites for components
+'     - https://github.com/tupadr3/plantuml-icon-font-sprites#icon-sets
+!define ICONURL https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master
+!includeurl ICONURL/common.puml
+
+' !includeurl ICONURL/font-awesome/user_circle.puml
+
+' ===========================
+
+' layout
+' LAYOUT_TOP_DOWN()
+LAYOUT_LANDSCAPE()
+hide stereotype
+
+title Nonprofit Platform Auth: Service to Service
+
+!$COLOR_BLUE = "#438dd5"
+
+AddElementTag("subject", $bgColor="$COLOR_BLUE")
+AddRelTag("subject", $lineColor="$COLOR_BLUE", $textColor="$COLOR_BLUE")
+
+System_Boundary(AAD, "*-cor-platform AAD App") {
+    System(aaaRoles, "App Roles", "") {
+        Container(aaaReadAll, "aaa-some-api.Read.All", "Role")
+        Container(aaaReadWriteAll, "aaa-some-api.ReadWrite.All", "Role")
+        Container(aaaDeleteAll, "aaa-some-api.Delete.All", "Role")
+    }
+}
+
+System(aaa, "SCS aaa", "Resource Group") {
+    Container(aaaSomeApi, "aaa-some-api-cus-01", "Web API", $sprite="AzureWebApp", $tags="subject")
+    AzureManagedIdentity(aaaSomeApiIdentity, "aaa-some-api-cus-01", "Managed Identity")
+
+    AzureFunction(aaaSomeFunc, "aaa-some-func-cus-01", "Azure Function")
+    AzureManagedIdentity(aaaSomeFuncIdentity, "aaa-some-func-cus-01", "Managed Identity")
+
+    Rel(aaaSomeApiIdentity, aaaSomeApi, "Assigned", "")
+    Rel(aaaSomeFuncIdentity, aaaSomeFunc, "Assigned", "")
+}
+
+System(bbb, "SCS bbb", "Resource Group") {
+    AzureWebApp(bbbSomeApi, "bbb-some-api-cus-01", "Web API")
+    AzureManagedIdentity(bbbSomeApiIdentity, "bbb-some-api-cus-01", "Managed Identity")
+
+    Rel(bbbSomeApiIdentity, bbbSomeApi, "Assigned", "")
+}
+
+System(lgc, "SCS lgc", "Resource Group") {
+    AzureWebApp(lgcInternalApi, "lgc-internal-api-cus-01", "Web API")
+    AzureManagedIdentity(lgcInternalApiIdentity, "lgc-internal-api-cus-01", "Managed Identity")
+
+    Rel(lgcInternalApiIdentity, lgcInternalApi, "Assigned", "")
+}
+
+Rel(aaaSomeApi, aaaRoles, "Defines", $tags="subject")
+
+Rel(aaaDeleteAll, aaaSomeFuncIdentity, "Assigned to")
+Rel(aaaReadWriteAll, aaaSomeFuncIdentity, "Assigned to")
+Rel(aaaReadAll, bbbSomeApiIdentity, "Assigned to")
+Rel(aaaReadWriteAll, lgcInternalApiIdentity, "Assigned to")
+
+Rel(aaaSomeFunc, aaaSomeApi, "Calls")
+Rel(bbbSomeApi, aaaSomeApi, "Calls")
+Rel(lgcInternalApiIdentity, aaaSomeApi, "Calls")
+
+' custom styling
+' ==============
+!$COLOR_BG = "#efeeed"
+!$COLOR_FONT = "#000000"
+
+UpdateElementStyle("System", $bgColor=$COLOR_BG, $fontColor=$COLOR_FONT)
+
+@enduml

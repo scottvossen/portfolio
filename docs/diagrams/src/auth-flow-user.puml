@@ -1,0 +1,99 @@
+@startuml auth-flow-user
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+' Import azure components
+'     - https://dev.azure.com/azurecom/ACOM/_wiki/wikis/ACOM.wiki/4061/PlantUML-Diagrams
+'     - https://github.com/RicardoNiepel/C4-PlantUML
+'     - https://github.com/plantuml-stdlib/Azure-PlantUML
+'     - https://github.com/plantuml-stdlib/Azure-PlantUML/blob/master/AzureSymbols.md#azure-symbols
+!define AzurePuml https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist
+!includeurl AzurePuml/AzureCommon.puml
+' optional flag for simplified view (must be after common)
+' !includeurl AzurePuml/AzureSimplified.puml
+!includeurl AzurePuml/AzureC4Integration.puml
+
+!includeurl AzurePuml/AIMachineLearning/all.puml
+!includeurl AzurePuml/Analytics/all.puml
+!includeurl AzurePuml/Compute/all.puml
+!includeurl AzurePuml/Containers/all.puml
+!includeurl AzurePuml/Databases/all.puml
+!includeurl AzurePuml/DevOps/all.puml
+!includeurl AzurePuml/General/all.puml
+!includeurl AzurePuml/Identity/all.puml
+!includeurl AzurePuml/Integration/all.puml
+!includeurl AzurePuml/Management/all.puml
+!includeurl AzurePuml/Media/all.puml
+!includeurl AzurePuml/Mobile/all.puml
+!includeurl AzurePuml/Networking/all.puml
+!includeurl AzurePuml/Security/all.puml
+!includeurl AzurePuml/Storage/all.puml
+!includeurl AzurePuml/Web/all.puml
+
+' Import sprites for components
+'     - https://github.com/tupadr3/plantuml-icon-font-sprites#icon-sets
+!define ICONURL https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master
+!includeurl ICONURL/common.puml
+
+!includeurl ICONURL/devicons/react.puml
+
+' ===========================
+
+' layout
+' LAYOUT_TOP_DOWN()
+LAYOUT_LANDSCAPE()
+hide stereotype
+
+title Auth Flows: Nonprofit Platform User
+
+!$COLOR_RED = "#d9534f"
+!$COLOR_BLUE = "#438dd5"
+!$COLOR_GREEN = "#6aa84f"
+
+AddElementTag("subject", $bgColor="$COLOR_GREEN")
+
+AddRelTag("subject", $lineColor="$COLOR_GREEN", $textColor="$COLOR_GREEN")
+AddRelTag("bad", $lineColor="$COLOR_RED", $textColor="$COLOR_RED")
+
+AzureResourceGraphExplorer(graphApi, "Graph API", "AAD")
+
+' System_Boundary(npoPlatform, "NPO Platform") {
+    AzureWebApp(sgnApi, "sgn-signup-api", "Web API")
+    Container(nppPortal, "npp-portal", "React", $sprite="react")
+
+    System(aad, "*-cor-platform AAD App", "") {
+      Container(tenantAdmin, "tenant.admin", "User Permission")
+    }
+' }
+
+System(users, "Nonprofit Users", "") {
+  AzureActiveDirectoryUser(user, "Nonprofit User", "User")
+  AzureActiveDirectoryUser(adminUser, "Nonprofit Admin", "User")
+
+  SetPropertyHeader("Claim", "Value")
+  AddProperty("Roles", "[ tenant.admin ]")
+  Container(adminUserJwt, "Nonprofit Admin", "JWT", $sprite="AzurePipelines")
+
+  SetPropertyHeader("Claim", "Value")
+  AddProperty("Roles", "[ ]")
+  Container(userJwt, "Nonprofit User", "JWT", $sprite="AzurePipelines")
+
+  Rel(adminUserJwt, adminUser, "Authenticates")
+  Rel(userJwt, user, "Authenticates")
+}
+
+Rel(sgnApi, graphApi, "Queries")
+Rel(sgnApi, tenantAdmin, "Assigns")
+Rel(tenantAdmin, adminUser, "Assigned To", $tags="subject")
+Rel(aad, adminUserJwt, "Generates")
+Rel(aad, userJwt, "Generates")
+Rel(adminUser, nppPortal, "Authorized", $tags="subject")
+Rel(user, nppPortal, "Unauthorized", $tags="bad")
+
+' custom styling
+' ==============
+!$COLOR_BG = "#efeeed"
+!$COLOR_FONT = "#000000"
+
+UpdateElementStyle("System", $bgColor=$COLOR_BG, $fontColor=$COLOR_FONT)
+
+@enduml

@@ -1,0 +1,124 @@
+@startuml identity-auth-diagram
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+' Import azure components
+'     - https://dev.azure.com/azurecom/ACOM/_wiki/wikis/ACOM.wiki/4061/PlantUML-Diagrams
+'     - https://github.com/RicardoNiepel/C4-PlantUML
+'     - https://github.com/plantuml-stdlib/Azure-PlantUML
+'     - https://github.com/plantuml-stdlib/Azure-PlantUML/blob/master/AzureSymbols.md#azure-symbols
+!define AzurePuml https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist
+!includeurl AzurePuml/AzureCommon.puml
+' optional flag for simplified view (must be after common)
+' !includeurl AzurePuml/AzureSimplified.puml
+!includeurl AzurePuml/AzureC4Integration.puml
+
+!includeurl AzurePuml/AIMachineLearning/all.puml
+!includeurl AzurePuml/Analytics/all.puml
+!includeurl AzurePuml/Compute/all.puml
+!includeurl AzurePuml/Containers/all.puml
+!includeurl AzurePuml/Databases/all.puml
+!includeurl AzurePuml/DevOps/all.puml
+!includeurl AzurePuml/General/all.puml
+!includeurl AzurePuml/Identity/all.puml
+!includeurl AzurePuml/Integration/all.puml
+!includeurl AzurePuml/Management/all.puml
+!includeurl AzurePuml/Media/all.puml
+!includeurl AzurePuml/Mobile/all.puml
+!includeurl AzurePuml/Networking/all.puml
+!includeurl AzurePuml/Security/all.puml
+!includeurl AzurePuml/Storage/all.puml
+!includeurl AzurePuml/Web/all.puml
+
+' Import sprites for components
+'     - https://github.com/tupadr3/plantuml-icon-font-sprites#icon-sets
+!define ICONURL https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master
+!includeurl ICONURL/common.puml
+
+!includeurl ICONURL/font-awesome/user_circle.puml
+!includeurl ICONURL/font-awesome/user_circle_o.puml
+!includeurl ICONURL/font-awesome/id_badge.puml
+!includeurl ICONURL/font-awesome/key.puml
+
+' ===========================
+
+' layout
+' LAYOUT_TOP_DOWN()
+LAYOUT_LANDSCAPE()
+hide stereotype
+
+title Identity Auth Diagram
+
+System_Boundary(corPlatformApp, "cor-platform AAD App") {
+    Container(corPlatformAppEntPrincipal, "Enterprise App", "Service Principal", "The tenant specific app instance assigns roles to other principals, users, and user groups.", $sprite="user_circle")
+
+    System(platformRoles, "Platform Roles", "App Roles") {
+        Container(npoAdminRole, "Npo.Admin", "Role", "Internal engineers that manage the Nonprofit Platform and NPO Development Platform.")
+        Container(npoSupportRole, "Npo.Support", "Role", "Internal users with read/write access to the Nonprofit Platform's management tools. This includes the NPO Business and Support teams, as well as the engineering team for full access.")
+        Container(npoBusinessRole, "Npo.Business", "Role", "Internal stakeholders with limited access.")
+        Container(npoReaderRole, "Npo.Reader", "Role", "Internal users with read only access to the Nonprofit Platform's admin tools.")
+    }
+
+    System(appRoles, "Service Roles", "App Roles") {
+        Container(svc1Roles, "Svc1 Roles", "Role", "{resource}.Read.All, {resource}.ReadWrite.All, {resource}.Delete.All")
+        Container(svc2Roles, "Svc2 Roles", "Role", "{resource}.Read.All, {resource}.ReadWrite.All, {resource}.Delete.All")
+    }
+}
+
+System(corPlatformAdminApp, "cor-platform-admin", "AAD App") {
+    Container(corPlatformAdminAppEntPrincipal, "Enterprise App", "Service Principal", "The tenant specific app instance that is assigned role(s).", $sprite="user_circle")
+    Container(corPlatformAdminCreds, "Credentials", "Secret", "Admin credentials for platform management, development, and testing.", $sprite="key")
+}
+
+System(userGroups, "User Groups", "") {
+    AzureActiveDirectoryGroup(npoAdminGroup, "NPO Admin", "AAD User Group", "nonprofitcrew")
+    AzureActiveDirectoryGroup(npoSupportGroup, "NPO Support", "AAD User Group", "philit,nonprofitopssup")
+    AzureActiveDirectoryGroup(npoBusinessGroup, "NPO Business", "AAD User Group", "TBD")
+    AzureActiveDirectoryGroup(npoReaderGroup, "NPO Reader", "AAD User Group", "nonprofitsup")
+}
+
+System(scs1, "SCS 1", "Resource Group") {
+    AzureWebApp(svc1App, "App Service", "App Service", "")
+    AzureManagedIdentity(svc1Identity, "App Service Identity", "Managed Identity", "A system-assigned managed identity for the app service.")
+
+    Rel(svc1Identity, svc1App, "Assigned", "NO SECRET MGMT")
+}
+
+System(scs2, "SCS 2", "Resource Group") {
+    AzureWebApp(svc2App, "App Service", "App Service", "")
+    AzureManagedIdentity(svc2Identity, "App Service Identity", "Managed Identity", "A system-assigned managed identity for the app service.")
+
+    Rel(svc2Identity, svc2App, "Assigned", "NO SECRET MGMT")
+}
+
+System(devMachine, "Local Development", " ") {
+    Person(developer, "Developer", "Microsoft SSO")
+    Container(visualStudio, "Visual Studio", "Default Credentials", "Microsoft Identity uses SSO creds when signed in to the IDE.")
+
+    Rel(visualStudio, developer, "Impersonates", "NO SECRET MGMT")
+}
+
+' admin access
+Rel(corPlatformAdminAppEntPrincipal, npoAdminRole, " ")
+Rel(corPlatformApp, visualStudio, "Trusts")
+
+' assign user groups
+Rel(npoAdminGroup, npoAdminRole, " ")
+Rel(npoSupportGroup, npoSupportRole, " ")
+Rel(npoBusinessGroup, npoBusinessRole, " ")
+Rel(npoReaderGroup, npoReaderRole, " ")
+
+' service roles
+Rel(svc1Identity, svc1Roles, "Defines")
+Rel(svc2Identity, svc2Roles, "Defines")
+
+Rel(svc1Roles, svc2Identity, "Assigned to")
+Rel(svc2Roles, svc1Identity, "Assigned to")
+
+' custom styling
+' ==============
+!$COLOR_BG = "#efeeed"
+!$COLOR_FONT = "#000000"
+
+UpdateElementStyle("System", $bgColor=$COLOR_BG, $fontColor=$COLOR_FONT)
+
+@enduml
